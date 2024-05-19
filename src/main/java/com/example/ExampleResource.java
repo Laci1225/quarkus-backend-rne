@@ -1,5 +1,6 @@
 package com.example;
 
+import io.quarkus.security.Authenticated;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
@@ -10,6 +11,7 @@ public class ExampleResource {
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
+    @Authenticated
     public String hello() {
         return "Hello RESTEasy";
     }
