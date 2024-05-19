@@ -30,16 +30,11 @@ public class UserDetailsRequestFilter implements ContainerRequestFilter {
 
     @Override
     public void filter(ContainerRequestContext requestContext) {
-        log.error("Authentication: {}", securityIdentity.getPrincipal().getName());
-        log.info("Authentication: {}", securityIdentity.getPrincipal().getName());
-        log.debug("Authentication: {}", securityIdentity.getPrincipal().getName());
         if (securityIdentity.isAnonymous()) {
             return;
         }
-        /*String auth0UserId = securityIdentity.getPrincipal().getName();
-        log.error("Authentication: {}", auth0UserId);
+        String auth0UserId = securityIdentity.getPrincipal().getName();
         CompletionStage<AppMetadata> appMetadataStage = auth0Service.getUserInfo(auth0UserId).subscribeAsCompletionStage();
-
         appMetadataStage.whenComplete((appMetadata, throwable) -> {
             if (throwable != null) {
                 log.error("Failed to get user info from Auth0", throwable);
@@ -51,6 +46,6 @@ public class UserDetailsRequestFilter implements ContainerRequestFilter {
 
             requestContext.getHeaders().add("X-App-User-Type", userType);
             requestContext.getHeaders().add("X-App-User-Id", userId);
-        });*/
+        });
     }
 }

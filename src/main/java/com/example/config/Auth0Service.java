@@ -16,7 +16,7 @@ import java.util.Map;
 
 @ApplicationScoped
 public class Auth0Service {
-/*
+
     private static final OkHttpClient client = new OkHttpClient();
     private static final Logger log = Logger.getLogger(Auth0Service.class);
     @Inject
@@ -29,7 +29,6 @@ public class Auth0Service {
     String accessToken;
 
     public Uni<AppMetadata> getUserInfo(String userId) {
-        log.error("Auth0 Management API URL: " + audience + "users/" + userId);
         return Uni.createFrom().item(Unchecked.supplier(() -> {
             String auth0ManagementApiUrl = audience + "users/" + userId;
             log.error("Auth0 Management API URL: " + auth0ManagementApiUrl);
@@ -38,8 +37,10 @@ public class Auth0Service {
                     .header("Authorization", "Bearer " + accessToken)
                     .build();
             try (Response response = client.newCall(request).execute()) {
+                log.error("Response: " + response);
                 if (response.isSuccessful() && response.body() != null) {
                     var responseBody = objectMapper.readValue(response.body().string(), Map.class);
+                    log.error(responseBody);
                     return objectMapper.convertValue(responseBody.get("app_metadata"), AppMetadata.class);
                 }
             } catch (IOException e) {
@@ -48,7 +49,7 @@ public class Auth0Service {
             return new AppMetadata();
         }));
     }
-*/
+
     /*public void createUser(String email, String id, String givenName, String familyName, Role role) {
         MediaType mediaType = MediaType.parse("application/json");
         UserData userData = new UserData(

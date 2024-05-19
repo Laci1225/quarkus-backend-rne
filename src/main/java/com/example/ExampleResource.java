@@ -2,6 +2,7 @@ package com.example;
 
 import io.quarkus.oidc.IdToken;
 import io.quarkus.security.Authenticated;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
@@ -18,8 +19,8 @@ public class ExampleResource {
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
-    @Authenticated
     public String hello() {
+
         return "Hello RESTEasy"  + idToken.getName();
     }
 }

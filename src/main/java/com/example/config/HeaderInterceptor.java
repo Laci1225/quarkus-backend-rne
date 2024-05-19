@@ -13,8 +13,8 @@ import java.util.List;
 
 @Provider
 @Priority(2)
-public class HeaderInterceptor{// implements ContainerRequestFilter {
-/*
+public class HeaderInterceptor implements ContainerRequestFilter {
+
     private static final Logger log = Logger.getLogger(HeaderInterceptor.class);
 
     @Context
@@ -33,5 +33,5 @@ public class HeaderInterceptor{// implements ContainerRequestFilter {
 
             log.infof("User Type: %s, User ID: %s", userType, userId);
         }
-    }*/
+    }
 }
