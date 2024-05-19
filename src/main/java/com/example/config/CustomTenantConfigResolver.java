@@ -2,23 +2,15 @@ package com.example.config;
 
 import io.quarkus.oidc.OidcTenantConfig;
 import io.quarkus.oidc.TenantResolver;
-import io.quarkus.oidc.runtime.TenantConfigBean;
-import io.quarkus.oidc.runtime.TenantConfigContext;
 import io.vertx.ext.web.RoutingContext;
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
-import jakarta.ws.rs.core.UriInfo;
 import org.eclipse.microprofile.config.ConfigProvider;
 
-import java.net.http.HttpHeaders;
 import java.util.HashMap;
 import java.util.Map;
-
+/*
 @ApplicationScoped
 public class CustomTenantConfigResolver implements TenantResolver {
-
-    @Inject
-    TenantConfigBean tenantConfigBean;
 
     private final Map<String, OidcTenantConfig> tenants = new HashMap<>();
 
@@ -37,6 +29,20 @@ public class CustomTenantConfigResolver implements TenantResolver {
 
     @Override
     public String resolve(RoutingContext context) {
-        return "default";  // for simplicity, always return default
+        // Extract the tenant ID from the request, if applicable
+        String tenantId = extractTenantId(context);
+
+        // Check if the tenant ID is valid and exists in the tenants map
+        if (tenantId != null && tenants.containsKey(tenantId)) {
+            return tenantId; // Return the resolved tenant ID
+        } else {
+            return "default"; // Return the default tenant if no specific tenant is found
+        }
     }
-}
+    private String extractTenantId(RoutingContext context) {
+        // Logic to extract tenant ID from the request, e.g., from headers, URL, etc.
+        // For simplicity, let's assume the tenant ID is extracted from a request header
+        return context.request().getHeader("Tenant-Id");
+    }
+}*/
+

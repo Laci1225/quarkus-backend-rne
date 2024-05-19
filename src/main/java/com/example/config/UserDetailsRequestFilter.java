@@ -7,14 +7,15 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.container.ContainerRequestContext;
 import jakarta.ws.rs.container.ContainerRequestFilter;
+import jakarta.ws.rs.container.PreMatching;
 import jakarta.ws.rs.ext.Provider;
-import org.jboss.logging.Logger;
-
-import java.io.IOException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.util.concurrent.CompletionStage;
 
 @Provider
 @Priority(1)
+@PreMatching
 @ApplicationScoped
 public class UserDetailsRequestFilter implements ContainerRequestFilter {
 
@@ -25,15 +26,18 @@ public class UserDetailsRequestFilter implements ContainerRequestFilter {
     SecurityIdentity securityIdentity;
 
 
-    private static final Logger log = Logger.getLogger(UserDetailsRequestFilter.class);
+    private static final Logger log = LoggerFactory.getLogger(UserDetailsRequestFilter.class);
 
     @Override
-    public void filter(ContainerRequestContext requestContext) throws IOException {
+    public void filter(ContainerRequestContext requestContext) {
+        log.error("Authentication: {}", securityIdentity.getPrincipal().getName());
+        log.info("Authentication: {}", securityIdentity.getPrincipal().getName());
+        log.debug("Authentication: {}", securityIdentity.getPrincipal().getName());
         if (securityIdentity.isAnonymous()) {
             return;
         }
-        String auth0UserId = securityIdentity.getPrincipal().getName();
-        log.error("Authentication: " + auth0UserId);
+        /*String auth0UserId = securityIdentity.getPrincipal().getName();
+        log.error("Authentication: {}", auth0UserId);
         CompletionStage<AppMetadata> appMetadataStage = auth0Service.getUserInfo(auth0UserId).subscribeAsCompletionStage();
 
         appMetadataStage.whenComplete((appMetadata, throwable) -> {
@@ -47,6 +51,6 @@ public class UserDetailsRequestFilter implements ContainerRequestFilter {
 
             requestContext.getHeaders().add("X-App-User-Type", userType);
             requestContext.getHeaders().add("X-App-User-Id", userId);
-        });
+        });*/
     }
 }
