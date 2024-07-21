@@ -1,6 +1,7 @@
 package com.example.service;
 
 import com.example.mapper.PhotoMapper;
+import com.example.model.Photo;
 import com.example.model.PhotoCreateDto;
 import com.example.repository.PhotoRepository;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -14,5 +15,8 @@ public class PhotoService {
     PhotoRepository photoRepository;
     public void savePhoto(PhotoCreateDto photoCreateDto) {
         photoRepository.persist(photoMapper.fromCreateDtoToPhoto(photoCreateDto));
+    }
+    public Photo getPhoto(Long id) {
+        return photoRepository.findById(id);
     }
 }
