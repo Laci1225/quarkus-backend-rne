@@ -1,13 +1,13 @@
 package com.example.Resource;
 
-import com.example.model.Photo;
-import com.example.model.PhotoCreateDto;
-import com.example.model.User;
+import com.example.model.CapturedPhotos;
+import com.example.model.PhotoData;
 import com.example.service.PhotoService;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 
 
 @Path("/photos")
@@ -19,14 +19,22 @@ public class PhotoResource {
     @POST
     @Consumes({MediaType.APPLICATION_JSON})
     @Transactional
-    public void savePhoto(PhotoCreateDto photoCreateDto) {
-        photoService.savePhoto(photoCreateDto);
+    public Response savePhoto(CapturedPhotos capturedPhotos) {
+        photoService.savePhoto(capturedPhotos);
+        return Response.ok().build();
     }
 
     @GET
     @Path("/{id}")
     @Produces({MediaType.APPLICATION_JSON})
-    public Photo getPhoto(@PathParam("id") Long id) {
+    public PhotoData getPhoto(@PathParam("id") Long id) {
         return photoService.getPhoto(id);
+    }
+
+    @GET
+    @Path("/today/{id}")
+    @Produces({MediaType.APPLICATION_JSON})
+    public PhotoData getMyTodayPhoto(@PathParam("id") Long id) {
+        return photoService.getMyTodayPhoto(id);
     }
 }
