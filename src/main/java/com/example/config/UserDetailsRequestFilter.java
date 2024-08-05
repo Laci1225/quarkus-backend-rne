@@ -1,18 +1,6 @@
 package com.example.config;
 
-import com.example.constants.AppMetadata;
-import io.quarkus.security.identity.SecurityIdentity;
-import jakarta.annotation.Priority;
-import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
-import jakarta.ws.rs.container.ContainerRequestContext;
-import jakarta.ws.rs.container.ContainerRequestFilter;
-import jakarta.ws.rs.container.PreMatching;
-import jakarta.ws.rs.ext.Provider;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import java.util.concurrent.CompletionStage;
-
+/*
 @Provider
 @Priority(1)
 @PreMatching
@@ -49,3 +37,4 @@ public class UserDetailsRequestFilter implements ContainerRequestFilter {
         });
     }
 }
+*/

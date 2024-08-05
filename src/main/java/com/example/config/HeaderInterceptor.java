@@ -1,16 +1,6 @@
 package com.example.config;
 
-import jakarta.annotation.Priority;
-import jakarta.ws.rs.container.ContainerRequestContext;
-import jakarta.ws.rs.container.ContainerRequestFilter;
-import jakarta.ws.rs.container.PreMatching;
-import jakarta.ws.rs.core.Context;
-import jakarta.ws.rs.core.UriInfo;
-import jakarta.ws.rs.ext.Provider;
-import org.jboss.logging.Logger;
-
-import java.util.List;
-
+/*
 @Provider
 @Priority(2)
 public class HeaderInterceptor implements ContainerRequestFilter {
@@ -34,4 +24,4 @@ public class HeaderInterceptor implements ContainerRequestFilter {
             log.infof("User Type: %s, User ID: %s", userType, userId);
         }
     }
-}
+}*/

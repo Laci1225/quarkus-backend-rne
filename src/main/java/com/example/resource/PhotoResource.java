@@ -1,4 +1,4 @@
-package com.example.Resource;
+package com.example.resource;
 
 import com.example.model.CapturedPhotos;
 import com.example.model.PhotoData;

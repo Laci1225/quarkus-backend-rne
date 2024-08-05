@@ -1,19 +1,6 @@
 package com.example.config;
 
-import com.example.constants.AppMetadata;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import io.smallrye.mutiny.Uni;
-import io.smallrye.mutiny.unchecked.Unchecked;
-import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
-import okhttp3.*;
-import org.eclipse.microprofile.config.inject.ConfigProperty;
-import org.jboss.logging.Logger;
-
-import java.io.IOException;
-import java.util.Map;
-
-
+/*
 @ApplicationScoped
 public class Auth0Service {
 
@@ -114,4 +101,4 @@ public class Auth0Service {
             throw new RuntimeException(e);
         }
     }*/
-}
+//}

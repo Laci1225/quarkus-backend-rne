@@ -4,8 +4,7 @@ import com.example.model.User;
 import com.example.repository.UserRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
-
-import java.util.List;
+import jakarta.ws.rs.core.Response;
 
 @ApplicationScoped
 public class UserService {
@@ -13,15 +12,11 @@ public class UserService {
     @Inject
     UserRepository userRepository;
 
-    public void createUser(String username, String email) {
-        User user = new User();
-        user.setUsername(username);
-        user.setEmail(email);
+    public Response saveUser(User user) {
         userRepository.persist(user);
+        return Response.created(null).build();
     }
 
-    public List<User> getAllUsers() {
-        return userRepository.listAll();
-    }
+
 }
 

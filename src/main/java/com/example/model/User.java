@@ -2,29 +2,47 @@ package com.example.model;
 
 import jakarta.persistence.*;
 
-@Entity
+import java.time.LocalDate;
+
 @Table(name = "users")
-public class User{
+@Entity
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long userId;
+    private String phoneNumber;
+    private LocalDate birthDate;
+    private String nickname;
 
-    private String username;
-    private String email;
-
-    public String getUsername() {
-        return username;
+    public LocalDate getBirthDate() {
+        return birthDate;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
     }
 
-    public String getEmail() {
-        return email;
+    public String getNickname() {
+        return nickname;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }
