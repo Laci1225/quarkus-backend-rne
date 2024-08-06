@@ -2,6 +2,7 @@ package com.example.resource;
 
 
 import com.example.model.BeReal;
+import com.example.model.BeRealCreateDto;
 import com.example.service.BeRealService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
@@ -18,11 +19,12 @@ public class BeRealResource {
     BeRealService berealService;
 
     @POST
-    public void createBeReal(BeReal bereal) {
-        berealService.saveBeReal(bereal);
+    @Path("/upload")
+    public void createBeReal(BeRealCreateDto beRealCreateDto) {
+        berealService.saveBeReal(beRealCreateDto);
     }
 
-    @GET
+    /*@GET
     @Path("/user/{userId}")
     public List<BeReal> getUserBeReals(@PathParam("userId") Long userId) {
         return berealService.getUserBeReals(userId);
@@ -32,6 +34,22 @@ public class BeRealResource {
     @Path("/friends/{userId}")
     public List<BeReal> getFriendsBeReals(@PathParam("userId") Long userId) {
         return berealService.getFriendsBeReals(userId);
+    }*/
+
+    @GET
+    @Path("/feed")
+    public List<BeReal> getUserFeed(@QueryParam("userId") Long userId) {
+        //List<BeReal> userBeReals = berealService.getUserBeReals(userId);
+        List<BeReal> friendsBeReals = berealService.getFriendsBeReals(userId);
+        //userBeReals.addAll(friendsBeReals);
+        //return userBeReals;
+        return friendsBeReals;
+    }
+
+    @GET
+    @Path("/today")
+    public List<BeReal> getTodayBeReals(@QueryParam("userId") Long userId) {
+        return berealService.getTodayBeReals(userId);
     }
 }
 

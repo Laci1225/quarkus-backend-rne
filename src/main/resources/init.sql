@@ -13,8 +13,8 @@ CREATE TABLE users (
 CREATE TABLE bereals (
                          bereal_id SERIAL PRIMARY KEY,
                          user_id INT REFERENCES users(user_id),
-                         front_photo_url TEXT NOT NULL,
-                         back_photo_url TEXT NOT NULL,
+                         front_photo BYTEA NOT NULL,
+                         back_photo BYTEA NOT NULL,
                          location VARCHAR(255),
                          date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                          UNIQUE(user_id, date_created)

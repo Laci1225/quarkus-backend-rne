@@ -14,17 +14,17 @@ public class BeReal {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    private String frontPhotoUrl;
-    private String backPhotoUrl;
+    private byte[] frontPhoto;
+    private byte[] backPhoto;
     private String location;
     private LocalDateTime dateCreated = LocalDateTime.now();
 
-    public String getBackPhotoUrl() {
-        return backPhotoUrl;
+    public byte[] getBackPhoto() {
+        return backPhoto;
     }
 
-    public void setBackPhotoUrl(String backPhotoUrl) {
-        this.backPhotoUrl = backPhotoUrl;
+    public void setBackPhoto(byte[] backPhoto) {
+        this.backPhoto = backPhoto;
     }
 
     public Long getBeRealId() {
@@ -43,12 +43,12 @@ public class BeReal {
         this.dateCreated = dateCreated;
     }
 
-    public String getFrontPhotoUrl() {
-        return frontPhotoUrl;
+    public byte[] getFrontPhoto() {
+        return frontPhoto;
     }
 
-    public void setFrontPhotoUrl(String frontPhotoUrl) {
-        this.frontPhotoUrl = frontPhotoUrl;
+    public void setFrontPhoto(byte[] frontPhoto) {
+        this.frontPhoto = frontPhoto;
     }
 
     public String getLocation() {
