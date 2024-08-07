@@ -37,18 +37,20 @@ public class BeRealResource {
     }*/
 
     @GET
-    @Path("/feed")
-    public List<BeReal> getUserFeed(@QueryParam("userId") Long userId) {
+    @Path("/feed/{userId}")
+    public List<BeReal> getUserFeed(@PathParam("userId") Long userId) {
         //List<BeReal> userBeReals = berealService.getUserBeReals(userId);
-        List<BeReal> friendsBeReals = berealService.getFriendsBeReals(userId);
+        //List<BeReal> friendsBeReals = berealService.getFriendsBeReals(userId);
         //userBeReals.addAll(friendsBeReals);
         //return userBeReals;
-        return friendsBeReals;
+        //return friendsBeReals;
+        var one  = berealService.getTodayBeReals(userId);
+        return one;
     }
 
     @GET
-    @Path("/today")
-    public List<BeReal> getTodayBeReals(@QueryParam("userId") Long userId) {
+    @Path("/today/{userId}")
+    public List<BeReal> getTodayBeReals(@PathParam("userId" ) Long userId) {
         return berealService.getTodayBeReals(userId);
     }
 }
