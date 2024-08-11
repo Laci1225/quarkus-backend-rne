@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-test
+  labels:
+    app: k8s-test
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: k8s-test
+  template:
+    metadata:
+      labels:
+        app: k8s-test
+    spec:
+      containers:
+        - name: k8s-test
+          image: nagylaszlolevente/k8s-test:latest
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "200Mi"
+            limits:
+              cpu: "500m"
+              memory: "400Mi"
+
