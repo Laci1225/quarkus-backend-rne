@@ -44,8 +44,7 @@ public class BeRealResource {
         //userBeReals.addAll(friendsBeReals);
         //return userBeReals;
         //return friendsBeReals;
-        var one  = berealService.getTodayBeReals(userId);
-        return one;
+        return berealService.getTodayBeReals(userId);
     }
 
     @GET
